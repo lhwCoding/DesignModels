@@ -11,8 +11,13 @@ package SingLetonPattern;
  * 肯定会乱成一团),所以只有使用单列模式,才能保证核心交易服务器独立控制整个流程
  */
 public class Singleton {
+    /***************懒汉模式**********************/
     /**
      * 持有私有静态实例,防止被引用,此处赋值为null,目的是实现延迟加载
+     *Singleton通过将构造方法限定为private避免了类在外部被实例化，
+     * 在同一个虚拟机范围内，Singleton的唯一实例只能通过getInstance()方法访问
+     *
+     *懒汉式单例的实现没有考虑线程安全问题，它是线程不安全的
      */
     private static Singleton instance = null;
 
@@ -31,19 +36,29 @@ public class Singleton {
         }
         return instance;
     }
+    /***************分割线**********************/
 
     /**
-     * 针对于多线程情况下 加锁sysnchronized
+     * 针对于多线程情况下 加锁sysnchronized 保证线程的安全
      */
     public static Singleton getSysInstance() {
         if (instance == null) {
-            synchronized (instance) {
+            synchronized (Singleton.class) {
                 if (instance == null) {
                     instance = new Singleton();
                 }
             }
         }
         return instance;
+    }
+
+    /***************饿汉模式**********************/
+   //饿汉式在类创建的同时就已经创建好一个静态的对象供系统使用，以后不再改变，所以天生是线程安全的
+    //加载一个空参构造
+    private static  final  Singleton single=new Singleton();
+    //静态方法
+    private  static  Singleton getSingleInstance(){
+        return single;
     }
 
     /**
@@ -67,6 +82,7 @@ public class Singleton {
      所以程序还是有可能发生错误，其实程序在运行过程是很复杂的，从这点我们就可以看出，
      尤其是在写多线程环境下的程序更有难度，有挑战性。我们对该程序做进一步优化：
      * */
+    //静态内部类
     /** 此处使用一个内部类来维护单例 */
     private static class SingletonFactory{
         private static Singleton instance = new Singleton();
