@@ -2,7 +2,7 @@ package FactoryPattern;
 
 /**
  * Created by smile on 2015/12/9.
- * ÊµÏÖÀà
+ * é‚®ç®±å®ç°ç±»
  */
 public class MailSender implements Sender {
     @Override

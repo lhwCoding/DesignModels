@@ -6,13 +6,13 @@ package FactoryPattern;
 public class FactoryTest {
     public static void main(String[] args) {
         // SendMainFactory factory = new SendMainFactory();
-        //·½Ê½Ò»: ÀàĞÍ¹¤³§
+        //æ–¹å¼ä¸€: ç±»å‹å·¥å‚
         //  Sender sender = factory.produce("sms");
-        //·½Ê½¶ş:¶ÔÏó¹¤³§
+        //æ–¹å¼äºŒ:å¯¹è±¡å·¥å‚
         //Sender sender=factory.produceMail();
-        //·½Ê½Èı: ¾²Ì¬¹¤³§
+        //æ–¹å¼ä¸‰: é™æ€å·¥å‚
         //Sender sender = SendMainFactory.ProduceMail();
-         //·½Ê½Èı:³éÏó¹¤³§
+        //æ–¹å¼ä¸‰:æŠ½è±¡å·¥å‚
         Provider   provider=new SendMailFactory();
         Sender  sender=provider.produce();
         sender.Send();

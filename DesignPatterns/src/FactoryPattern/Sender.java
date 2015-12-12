@@ -2,7 +2,7 @@ package FactoryPattern;
 
 /**
  * Created by smile on 2015/12/9.
- * ´´½¨Ò»¸öÁ½Õß¹²Í¬µÄ½Ó¿Ú
+ *å‘é€æ¥å£
  */
 public interface Sender {
     public  void Send();
